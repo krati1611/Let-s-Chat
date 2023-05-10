@@ -1,0 +1,19 @@
+{% extends 'chatapp/base.html' %}
+{% block body %}
+<div class="w-full block w-auto">
+  <form method="post">
+    <div class="w-1/4 m-4 p-5 rounded bg-blue-900 text-black"> 
+        <table>
+            {% csrf_token %}
+            {{ form.as_table }}
+        </table>
+    </div>
+    <button type="submit"  class="py-2 pl-3 pr-4 m-4 rounded bg-green-900 text-white">Add</button>
+  </form>
+</div>
+{% endblock %}
+
+      
+
+  
+ 

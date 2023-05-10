@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Let's Chat</title>
+</head>
+<body>
+    <nav class="shadow-lg px-3 py-2.5">
+        <div class="container flex flex-wrap justify-between mx-auto">
+            <a class="flex items-center" href="/rooms">
+                <img class="h-16 mr-3" src="https://img.icons8.com/?size=512&id=64059&format=png" alt="">
+                <span class="self-center text-4xl font-semibold">Let's Chat</span>
+            </a>
+
+            <div class="w-full block w-auto">
+                <ul class="flex flex-row p-4 mt-4 border rounded-lg border-grau-100 bg-blue-50">
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="/" class="block py-2 pl-3 pr-4 rounded bg-blue-900 text-white text-uppercase" >{{user}}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a class="block py-2 pl-3 pr-4 rounded " href="/">Rooms</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 pl-3 pr-4 rounded " href="/addroom">Add Room</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 pl-3 pr-4 rounded " href="/about">About</a>
+                    </li>
+                        {% if request.user.is_authenticated %}
+                        <img class="h-10" src="https://img.icons8.com/?size=512&id=64042&format=png" alt="">
+                        <a class="block py-2 rounded " href="{%url 'logout' %}">Logout</a>
+                        {% else %}
+                        <img class="h-10" src="https://img.icons8.com/?size=512&id=115640&format=png" alt="">
+                        <a class="block py-2 rounded " href="{%url 'login' %}">Login</a>
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    {% block body %}
+    {% endblock %}
+    
+</body>
+</html>
